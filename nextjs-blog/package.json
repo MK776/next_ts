@@ -16,6 +16,7 @@
     "tailwindcss": "*",
     "remark": "*",
     "remark-html": "*",
-    "date-fns": "*"
+    "date-fns": "*",
+    "swr": "*"
   }
 }
