@@ -23,3 +23,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+my_gcp_credentials.json

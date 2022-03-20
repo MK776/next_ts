@@ -1,0 +1,6 @@
+.gcloudignore
+.gitignore
+
+node_modules/
+
+my_gcp_credentials.json
