@@ -2,7 +2,7 @@ import Layout from '../../components/layout'
 import Image from 'next/image'
 
 export async function getStaticProps({ params }) {
-    const res = await fetch('https://coffee.alexflipnote.dev/random.json')
+    const res = await fetch('https://ccc-bff-miah4kudbq-an.a.run.app/test')
     const json = await res.json()
 
     return {
