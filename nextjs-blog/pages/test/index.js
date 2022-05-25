@@ -8,7 +8,7 @@ export async function getStaticProps({ params }) {
         const json = await res.json()
         data = JSON.stringify(json)
     }catch(error){
-        data = {'error': JSON.stringify(error)}
+        data = JSON.stringify({'error': error})
     }
 
     return {
@@ -19,7 +19,7 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default function Test({ res }) {
+export default function Test({ data }) {
     return (
         <Layout>
             <p>ISR</p>
