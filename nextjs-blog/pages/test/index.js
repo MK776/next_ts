@@ -17,7 +17,7 @@ export default function Test({ res }) {
     return (
         <Layout>
             <p>ISR</p>
-            <p>{res}</p>
+            <p>{JSON.stringify(res)}</p>
         </Layout>
     )
 }
