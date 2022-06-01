@@ -1,8 +1,13 @@
-import Layout from '../../components/layout'
+import { NextPage, GetServerSideProps } from 'next'
 import Image from 'next/image'
 
+import PrivateLayout from '@/layout/private'
 
-export async function getServerSideProps(context) {
+type Props = {
+    url:string
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
     const res = await fetch('https://coffee.alexflipnote.dev/random.json')
     const json = await res.json()
 
@@ -13,17 +18,22 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default function SSR({ url }) {
+const SSR:NextPage<Props> = (props) => {
+    const {url} = props
+
     return (
-        <Layout>
+        <PrivateLayout>
             <p>SSR</p>
             <article>
                 <Image
                     src={url}
                     width={700}
                     height={500}
+                    alt='api'
                 />
             </article>
-        </Layout>
+        </PrivateLayout>
     )
 }
+
+export default SSR

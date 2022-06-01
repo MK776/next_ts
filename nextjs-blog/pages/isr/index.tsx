@@ -1,7 +1,13 @@
-import Layout from '../../components/layout'
+import type { NextPage, GetStaticPropsResult } from 'next'
 import Image from 'next/image'
 
-export async function getStaticProps({ params }) {
+import PrivateLayout from '@/layout/private'
+
+type Props = {
+    url:string
+}
+
+export const getStaticProps = async ():Promise<GetStaticPropsResult<Props>> =>  {
     const res = await fetch('https://coffee.alexflipnote.dev/random.json')
     const json = await res.json()
 
@@ -13,17 +19,22 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default function ISR({ url }) {
+const ISR:NextPage<Props> = (props) => {
+    const {url} = props
+
     return (
-        <Layout>
+        <PrivateLayout>
             <p>ISR</p>
             <article>
                 <Image
                     src={url}
                     width={700}
                     height={500}
+                    alt='api'
                 />
             </article>
-        </Layout>
+        </PrivateLayout>
     )
 }
+
+export default ISR

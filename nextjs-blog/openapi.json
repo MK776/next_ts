@@ -1,0 +1,105 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "frontend and bff",
+    "version": "1.0",
+    "summary": "フロントエンドとBFF間のスキーマ定義",
+    "description": "",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8080"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "ログイン",
+        "operationId": "post-login",
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/User"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "uuid": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          },
+          "409": {
+            "description": "Email Already Taken"
+          }
+        },
+        "description": "ログインIDとパスワード」",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          },
+          "description": ""
+        },
+        "parameters": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "title": "ログイン",
+        "type": "object",
+        "description": "",
+        "examples": [
+          {
+            "loginId": "login_id",
+            "password": "password"
+          }
+        ],
+        "properties": {
+          "loginId": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loginId",
+          "password"
+        ]
+      }
+    },
+    "responses": {
+      "User": {
+        "description": "ログイン後のユーザー情報",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "uuid": {
+                  "type": "string"
+                }
+              }
+            },
+            "examples": {}
+          }
+        }
+      }
+    }
+  }
+}
